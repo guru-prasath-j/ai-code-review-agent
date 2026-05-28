@@ -11,12 +11,12 @@ def post_review_comment(repo_full_name: str, pr_number: int, review_text: str) -
     g = get_github_client()
     repo = g.get_repo(repo_full_name)
     pr = repo.get_pull(pr_number)
-    body = "## 🤖 Agentic Code Review\n\n" + review_text + "\n\n---\n*Powered by ai-code-review-agent · GPT-4o-mini*"
+    body = "## Agentic Code Review\n\n" + review_text + "\n\n---\nPowered by ai-code-review-agent + GPT-4o-mini"
     comment = pr.create_issue_comment(body)
     return comment.html_url
 
 
-def post_inline_comment(repo_full_name: str, pr_number: int, commit_sha: str, filepath: str, line: int, body: str) -> str:
+def post_inline_comment(repo_full_name, pr_number, commit_sha, filepath, line, body):
     g = get_github_client()
     repo = g.get_repo(repo_full_name)
     pr = repo.get_pull(pr_number)
